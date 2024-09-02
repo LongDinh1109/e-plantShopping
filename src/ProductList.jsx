@@ -297,11 +297,14 @@ function ProductList() {
   };
 
   useEffect(()=>{
-    console.log(cart);
     let total = 0;
+    let addedItemsList= {};
     for (let item of cart){
         total += item.quantity;
+        if(item.quantity > 0) addedItemsList[item.name] = true;
     }
+    
+    setAddedToCart(addedItemsList);
     setTotalItems(total);
     
   },[cart])
